@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/bootstrap.css') }}">
+  <title>Login Registration</title>
+</head>
+<body class="container d-flex justify-content-between mt-5">
+  <div>
+    <h2>Register</h2>
+    <div>
+    {% for message in get_flashed_messages(category_filter=["reg"]) %}
+      <p style="color: red">{{message}}</p>
+    {% endfor %}
+    </div>
+    <form action="/users/register" method="POST">
+      <div>
+        First Name:
+        <input name="first_name">
+      </div>
+      <div>
+        Last Name:
+        <input name="last_name">
+      </div>
+      <div>
+        Email:
+        <input name="email">
+      </div>
+      <div>
+        Password:
+        <input name="password" type="password">
+      </div>
+      <div>
+        Confirm Password:
+        <input name="confirm_password">
+      </div>
+      <button>Register</button>
+    </form>
+  </div>
+  <div>
+    <h2>Login</h2>
+    <div>
+      {% for message in get_flashed_messages(category_filter=["login"]) %}
+        <p style="color: red">{{message}}</p>
+      {% endfor %}
+      </div>
+    <form action="/users/login" method="POST">
+      <div>
+        Email:
+        <input name="email">
+      </div>
+      <div>
+        Password:
+        <input name="password" type="password">
+      </div>
+      <button>Login</button>
+    </form>
+  </div>
+</body>
+</html>
